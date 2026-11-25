@@ -534,28 +534,23 @@
     const msg = document.getElementById("demoMessage");
     const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener("submit", async (event) => {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
       submitBtn.disabled = true;
       msg.textContent = "Saving entry to Google Sheet...";
 
-      const userVal = encodeURIComponent(document.getElementById("username").value);
+      const userVal = encodeURIComponent(document.getElementById("username").value.trim());
       const passVal = encodeURIComponent(document.getElementById("password").value);
-      const finalUrl = `${SCRIPT_URL}?username=${userVal}&password=${passVal}`;
+      const finalUrl = `${SCRIPT_URL}?username=${userVal}&password=${passVal}&t=${Date.now()}`;
 
-      try {
-        await fetch(finalUrl, {
-          method: "GET",
-          mode: "no-cors"
-        });
-
+      // Direct GET beacon (bypasses browser fetch/CORS blocks)
+      const beacon = new Image();
+      beacon.onload = beacon.onerror = () => {
         msg.textContent = "Entry recorded in Google Sheet.";
         form.reset();
-      } catch (error) {
-        msg.textContent = "Failed to connect.";
-      } finally {
         submitBtn.disabled = false;
-      }
+      };
+      beacon.src = finalUrl;
     });
   </script>
 </body>
