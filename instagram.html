@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login • Instagram UI Clone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="insta.css" />
+</head>
+<body>
+  <main class="page-wrapper">
+    <section class="auth-container">
+      <!-- Left Column: CSS Phone Mockup -->
+      <div class="phone-showcase" aria-hidden="true">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="mock-header">
+              <span class="mock-logo">Instagram</span>
+              <div class="mock-icons">
+                <span>♡</span>
+                <span>✉</span>
+              </div>
+            </div>
+            <div class="mock-stories">
+              <div class="story-ring"><div class="story-avatar s1"></div></div>
+              <div class="story-ring"><div class="story-avatar s2"></div></div>
+              <div class="story-ring"><div class="story-avatar s3"></div></div>
+              <div class="story-ring"><div class="story-avatar s4"></div></div>
+            </div>
+            <div class="mock-post">
+              <div class="mock-post-user">
+                <span class="mini-dot"></span>
+                <span>design.studio</span>
+              </div>
+              <div class="mock-post-image"></div>
+              <div class="mock-post-actions">♥ &nbsp; 💬 &nbsp; ➤</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Login & Sign-up Cards -->
+      <div class="forms-column">
+        <div class="card login-card">
+          <h1 class="brand-wordmark">Instagram</h1>
+
+          <form class="login-form" id="demoLoginForm" onsubmit="handleDemoSubmit(event)">
+            <div class="input-group">
+              <input
+                type="text"
+                id="username"
+                placeholder="Phone number, username, or email"
+                autocomplete="off"
+                required
+              />
+            </div>
+
+            <div class="input-group password-group">
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                autocomplete="off"
+                required
+              />
+              <button type="button" class="toggle-password" id="toggleBtn">Show</button>
+            </div>
+
+            <button type="submit" class="btn-primary">Log in</button>
+          </form>
+
+          <div class="divider">
+            <span class="line"></span>
+            <span class="or-text">OR</span>
+            <span class="line"></span>
+          </div>
+
+          <a href="#" class="fb-login-link" onclick="event.preventDefault()">
+            <span class="fb-icon">f</span>
+            <span>Log in with Facebook</span>
+          </a>
+
+          <a href="#" class="forgot-link" onclick="event.preventDefault()">Forgot password?</a>
+          <p class="demo-notice" id="demoMessage"></p>
+        </div>
+
+        <div class="card signup-card">
+          <p>Don't have an account? <a href="#" onclick="event.preventDefault()">Sign up</a></p>
+        </div>
+
+        <div class="app-download">
+          <p>Get the app.</p>
+          <div class="store-badges">
+            <div class="badge">
+              <small>GET IT ON</small>
+              <strong>Google Play</strong>
+            </div>
+            <div class="badge">
+              <small>Get it from</small>
+              <strong>Microsoft</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-links">
+      <a href="#" onclick="event.preventDefault()">Meta</a>
+      <a href="#" onclick="event.preventDefault()">About</a>
+      <a href="#" onclick="event.preventDefault()">Blog</a>
+      <a href="#" onclick="event.preventDefault()">Jobs</a>
+      <a href="#" onclick="event.preventDefault()">Help</a>
+      <a href="#" onclick="event.preventDefault()">API</a>
+      <a href="#" onclick="event.preventDefault()">Privacy</a>
+      <a href="#" onclick="event.preventDefault()">Terms</a>
+      <a href="#" onclick="event.preventDefault()">Locations</a>
+    </nav>
+    <div class="footer-meta">
+      <span>English</span>
+      <span>• Static UI Project Demo (No Data Collected)</span>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle password visibility
+    const passwordInput = document.getElementById("password");
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = passwordInput.type === "password";
+      passwordInput.type = isHidden ? "text" : "password";
+      toggleBtn.textContent = isHidden ? "Hide" : "Show";
+    });
+
+    // Prevent form transmission for static front-end demo
+    function handleDemoSubmit(event) {
+      event.preventDefault();
+      const msg = document.getElementById("demoMessage");
+      msg.textContent = "Front-end UI demo triggered (no credentials are saved or sent).";
+    }
+  </script>
+</body>
+</html>
